@@ -1,6 +1,10 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { HomePage, SignInPage, SignUpPage } from "./routes"
 import { PublicLayout } from "./layouts/public-layout"
+import ProtectedRoute from "./layouts/protected-route"
+import MainLayout from "./layouts/main-layout"
+import { Generate } from "./views/generate"
+import { Dashboard } from "./routes/dashboard"
 
 export const App = () =>{
   return(
@@ -14,7 +18,18 @@ export const App = () =>{
           </Route>
 
           {/* protected Routes */}
+          <Route element={
+            <ProtectedRoute>
+              <MainLayout/>
+            </ProtectedRoute>
+           }>
+            <Route path="/generate" element={
+              <Generate/>}>
+                 <Route index element={<Dashboard/>}/> 
 
+            </Route>
+
+          </Route>
 
         </Routes>
       </Router>
