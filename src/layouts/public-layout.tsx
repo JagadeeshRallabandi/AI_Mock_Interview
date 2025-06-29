@@ -1,14 +1,18 @@
-import { Header } from '@/components/header'
-import AuthHandler from '@/handlers/user-auth-handler'
-import {Outlet} from 'react-router-dom'
+import { Footer } from "@/components/footer";
+import Header from "@/components/header";
+import AuthHanlder from "@/handlers/auth-handler";
+import { Outlet } from "react-router-dom";
 
-export const PublicLayout= () => {
+export const PublicLayout = () => {
   return (
     <div className="w-full">
-        <AuthHandler/>
-        <Header/>
-        <Outlet/>
-        <h1>Footer</h1>
+      {/* handler to store the user data */}
+      <AuthHanlder />
+      <Header />
+
+      <Outlet />
+
+      <Footer />
     </div>
-  )
-}
+  );
+};
